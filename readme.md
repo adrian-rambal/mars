@@ -1,14 +1,16 @@
 Set up environment provided as Docker container
 
-$ docker-build.sh # builds the Docker image
+$ bash docker-build.sh # builds the Docker image
 
-$ docker-run.sh # interactive bash inside the container
+$ bash docker-run.sh # interactive bash inside the container
 
 Inside the docker interactive bash session:
 
-composer update # installs dependencies
+$ bash scripts/run-tests.sh
 
-./vendor/bin/phpunit --testdox tests # executes tests
+TIP: To make development easier, once inside the container's bash session we can refresh the application files by running: 
+
+$ docker cp . CONTAINER:/usr/src/myapp # from our laptop session
 
 
 
