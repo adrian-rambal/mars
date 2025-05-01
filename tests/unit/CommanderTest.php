@@ -21,7 +21,7 @@ final class CommanderTest extends TestCase
 
         $this->expectException(TypeError::class);
 
-        $commander->send(null);
+        $commander->execute(null);
     }
 
     public static function invalidCommandProvider(): array
@@ -47,10 +47,10 @@ final class CommanderTest extends TestCase
 
         $this->expectException(InvalidCommandException::class);
 
-        $commander->send($command);
+        $commander->execute($command);
     }
 
-    public function testShouldSendInstructionsToRoverWhenValid() {
+    public function testShouldExecuteInstructionsToRoverWhenValid() {
         $rover = $this->createMock(Rover::class);
         $commander = new Commander($rover);
 
@@ -58,6 +58,6 @@ final class CommanderTest extends TestCase
             ->method('move')
             ->with($this->identicalTo('FRL'));
 
-        $commander->send('FRL');
+        $commander->execute('FRL');
     }
 }

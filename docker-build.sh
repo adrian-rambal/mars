@@ -1,1 +1,1 @@
-docker build -t my-php-app .
+docker build -t mars-rover .

@@ -1,1 +1,1 @@
-docker run -it --entrypoint bash my-php-app
+docker run -it --entrypoint bash mars-rover

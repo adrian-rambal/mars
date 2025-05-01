@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-// validates and sends commands to rover
+// validates and executes received commands to rover
 class Commander
 {
     const string MOVE_REGEX = '/^(F|L|R)+$/';
@@ -12,7 +12,7 @@ class Commander
         $this->rover = $rover;
     }
 
-    public function send(string $command): void
+    public function execute(string $command): void
     {
         if (!preg_match(self::MOVE_REGEX, $command)) {
             throw new InvalidCommandException('Invalid move command');

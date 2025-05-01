@@ -2,8 +2,12 @@ FROM alpine:latest AS alpine-source
 RUN apk add --no-cache unzip
 
 FROM php:8.3.16-zts
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
+# Install PCOV
+RUN pecl install pcov && docker-php-ext-enable pcov
+# Enable PCOV
+ENV PCOV_ENABLED=1
+COPY . /usr/src/workspace
+WORKDIR /usr/src/workspace
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 COPY --from=alpine-source /lib/ /lib/
